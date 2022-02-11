@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Races</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="danger" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-progress-bar type="indeterminate" color="danger"></ion-progress-bar>
+    <div  class="spinner_custom">
+      <ion-spinner color="danger" name="crescent"></ion-spinner>
+    </div>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-list>
+          <ion-item *ngFor="let result of results" [routerLink]="['/race-result/' + result.round ]">
+            <app-explore-container *ngIf='!results'></app-explore-container>
+            <ion-label> {{ result.raceName }} </ion-label>
+            <!-- <ion-badge color="medium" slot="start" class="ion-text-center">{{ result.round }}</ion-badge> -->
+            <ion-note slot="end" color="danger"> {{ result.round }} </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
