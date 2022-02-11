@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <form [formGroup]="logInForm" (ngSubmit)="onSubmit()" class="ion-text-center">
+
+          <img src="assets/car-2017.png" alt="">
+
+          <ion-item color="danger" style="padding: 10px; padding-top: 0;">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input id="email" type="email" formControlName="email" placeholder="Email"></ion-input>
+          </ion-item>
+
+          <ion-item color="danger" style="padding: 10px; padding-top: 0px;">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input id="password" type="password" formControlName="password" placeholder="Password"></ion-input>
+          </ion-item>
+          
+          
+          <ion-button shape="round" color="danger" fill="outline" type="submit" [disabled]="!logInForm.valid">Login</ion-button>
+          <ion-button shape="round" color="danger" fill="outline" [routerLink]="['/signin']">Signin</ion-button>
+         
+          
+        </form>
+
+        <div class="spinner_custom">
+          <ion-toggle slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
+        </div>
+          
+     
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
